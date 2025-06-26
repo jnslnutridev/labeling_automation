@@ -39,7 +39,7 @@ Atenção com a validade
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/jnslnutridev/labelrinty.git
+   git clone https://github.com/jnslnutridev/labeling_automation.git
    cd labelrinty
 ````
 
