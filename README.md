@@ -1,33 +1,102 @@
 # labeling_automation
 Automation of food labeling processes.
 
-# Automação de Impressão de Etiquetas - UAN
+```markdown
+# Labelrinty
 
-Este código foi feito com muito carinho para facilitar o trabalho na UAN, automatizando a geração e impressão das etiquetas diárias de alimentos. Com ele, você não precisa mais escrever manualmente as datas. O sistema gera, organiza e imprime automaticamente as etiquetas com as datas do dia e a data de validade do dia seguinte, tudo de forma simples e eficiente!
+**Labelrinty** é uma aplicação desktop feita em Python com interface gráfica para gerar etiquetas de manipulação e validade de alimentos, muito útil em Unidades de Alimentação e Nutrição (UAN). O sistema permite gerar etiquetas com datas automáticas (baseadas em categorias) ou inseridas manualmente, além de incluir texto personalizado.
 
- O que o código faz:
+## 🖼️ Exemplo de etiqueta
+```
 
-1. Geração de Etiquetas: Cria um PDF contendo 4 colunas e 16 linhas de etiquetas, com a data do dia e a data de validade uma abaixo da outra.
-2. Impressão Automática: Após gerar o PDF, o código envia o arquivo diretamente para a impressora configurada no sistema.
-3. Formatação das Etiquetas: Cada etiqueta exibe as datas sem nenhum texto adicional (exemplo: `09/10/24` e `10/10/24`), com um espaçamento adequado entre as linhas, garantindo clareza e organização.
+M: 26/06/2025
+V: 29/06/2025
+Atenção com a validade
 
- Como Executar:
+````
 
-Para facilitar a execução, um atalho "Gerar Etiquetas" foi criado na área de trabalho. Siga as instruções abaixo para usar:
+## 🚀 Funcionalidades
 
-1. Clique duas vezes no atalho "Gerar Etiquetas".
-2. O código será executado automaticamente:
-   - Ele gerará o PDF com as etiquetas do dia.
-   - O PDF será enviado diretamente para a impressora configurada, sem que você precise abrir ou configurar nada.
-3. Em alguns segundos, suas etiquetas estarão prontas e impressas!
+- 📅 Geração automática de datas de validade com base na categoria:
+  - Perecíveis (+3 dias)
+  - Semi-perecíveis (+15 dias)
+  - Não-perecíveis (+180 dias)
+  - Dietas (DM, Branda) com lógica dia/noite
+- ✍️ Inserção manual de datas (manipulação e validade)
+- 🖨️ Geração de arquivo PDF com etiquetas prontas para impressão automática
+- 💬 Campo de texto personalizado (exibido abaixo da validade)
+- 🎨 Interface moderna com CustomTkinter
+- 📅 Seletor de calendário para facilitar a entrada de datas
 
- Atenção:
-- Não modifique o código se você não tiver certeza do que está fazendo. Alterações podem causar falhas na automação, no layout das etiquetas ou até impedir que o código funcione corretamente.
+## 🛠️ Tecnologias utilizadas
 
- Observações Adicionais:
-- O código está preparado para gerar uma única página de etiquetas, ideal para uma rotina prática e rápida. Ele foi otimizado para que cada detalhe facilite seu dia a dia na UAN.
-- O PDF gerado é sempre temporário e não precisa ser salvo ou manipulado, já que o sistema cuida de todo o processo para você.
+- Python 3.9+
+- [FPDF](https://pyfpdf.github.io/fpdf2/) – geração de PDF
+- [CustomTkinter](https://github.com/TomSchimansky/CustomTkinter) – GUI moderna
+- [tkcalendar](https://github.com/j4321/tkcalendar) – calendário para seleção de datas
 
----
+## 📦 Instalação
+
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/jnslnutridev/labelrinty.git
+   cd labelrinty
+````
+
+2. Crie um ambiente virtual (opcional mas recomendado):
+
+    ```bash
+    python -m venv .venv
+    source .venv/bin/activate  # ou .venv\\Scripts\\activate no Windows
+    ```
+
+3. Instale as dependências:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+    Ou manualmente:
+
+    ```bash
+    pip install fpdf customtkinter tkcalendar
+    ```
+
+## ▶️ Como usar
+
+Execute o script principal:
+
+```bash
+python labelrinty.py
+```
+
+Na interface:
+
+1. Escolha uma **categoria** de validade (ou selecione “Manual” para inserir as datas).
+2. Preencha a **data de manipulação** (ou use o seletor).
+3. Preencha a **data de validade** (se estiver no modo Manual).
+4. Escreva um **texto personalizado** (opcional).
+5. Clique em **Gerar Etiquetas**.
+
+Um arquivo `etiquetas.pdf` será gerado com 56 etiquetas prontas para impressão.
+
+## 📁 Estrutura das etiquetas no PDF
+
+-   4 colunas por linha, 14 linhas por página.
+-   Tamanho ideal para etiquetas pequenas (como 50mm x 25mm).
+-   Cada etiqueta contém:
+
+    -   Linha 1: Data de manipulação (M)
+    -   Linha 2: Data de validade (V)
+    -   Linha 3: Texto personalizado (opcional)
+
+## 👨‍💻 Autor
+
+Desenvolvido por **Jhonny (jnslnutridev)**
+💼 Nutrição + Programação
+
+## 📃 Licença
+
+Este projeto está licenciado sob a [MIT License](LICENSE).
 
 Feito com carinho para tornar o trabalho mais rápido e eficiente.
